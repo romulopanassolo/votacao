@@ -19,15 +19,21 @@ public final class SessaoMocker {
 			.fim(LocalDateTime.now().plusMinutes(DURACAO))
 			.pauta(PautaMocker.PAUTA)
 			.build();
-	
-	public static final Sessao SESSAO_CREATED = Sessao.builder()
+		
+	public static final Sessao SESSAO_VOTO = Sessao.builder()
+			.inicio(LocalDateTime.now())
+			.fim(LocalDateTime.now().plusMinutes(DURACAO))
+			.pauta(PautaMocker.PAUTA_VOTO)
+			.build();
+		
+	public static final Sessao SESSAO_CRIADA = Sessao.builder()
 			.id(ID)
 			.inicio(LocalDateTime.now())
 			.fim(LocalDateTime.now().plusMinutes(DURACAO))
 			.pauta(PautaMocker.PAUTA)
 			.build();
 	
-	public static final Sessao SESSAO_CLOSED = Sessao.builder()
+	public static final Sessao SESSAO_ENCERRADA = Sessao.builder()
 			.id(ID)
 			.inicio(LocalDateTime.now())
 			.fim(LocalDateTime.now().minusMinutes(DURACAO))

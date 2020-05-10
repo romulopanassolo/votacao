@@ -45,7 +45,7 @@ public class Sessao implements Serializable {
 	@Column(name = "dt_fim", nullable = false)
 	private LocalDateTime fim;
 	
-	public boolean isClosed() {
+	public boolean isEncerrada() {
 		return LocalDateTime.now().isAfter(fim);
 	}
 	

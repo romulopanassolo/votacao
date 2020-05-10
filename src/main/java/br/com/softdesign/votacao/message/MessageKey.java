@@ -10,10 +10,11 @@ public enum MessageKey {
 	INVALID_PARAMETERS("error.invalidParameters"),
 	SESSAO_PAUTA_NAO_CADASTRADA("error.sessaoPautaNaoCadastrada"),
 	SESSAO_PAUTA_JA_CRIADA("error.sessaoPautaJaCriada"),
-	VOTO_SESSAO_NONEXISTENT("erro.votoWithSessaoNonexistent"),
-	VOTO_ASSOCIADO_NONEXISTENT("error.votoWithAssociadoNonexistent"),
-	VOTO_SESSAO_CLOSED("error.sessaoClosed"), 
-	VOTO_ASSOCIADO_ALREADY_REGISTERED("error.associadoAlreadyRegistered");
+	
+	VOTO_SESSAO_NAO_CADASTRADA("erro.votoSessaoNaoCadastrada"),
+	VOTO_ASSOCIADO_NAO_CADASTRADO("error.associadoNaoCadastrado"),
+	VOTO_SESSAO_ENCERRADA("error.sessaoEncerrada"), 
+	VOTO_ASSOCIADO_JA_VOTOU("error.associadoJaVotou");
 	
 	private final String key;
 	
