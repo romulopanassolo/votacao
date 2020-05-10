@@ -1,6 +1,6 @@
 package br.com.softdesign.votacao.dto;
 
-import br.com.softdesign.votacao.model.RespostaEnum;
+import br.com.softdesign.votacao.model.Resposta;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import lombok.Data;
 public class VotoDTO {
 	
 	private Long id;
-	private RespostaEnum respostaDTO;
+	private Resposta respostaDTO;
 	private SessaoDTO sessaoDTO;
 	private AssociadoDTO associadoDTO;
 	

@@ -1,5 +1,5 @@
 package br.com.softdesign.votacao.model;
 
-public enum RespostaEnum {
+public enum Resposta {
 	SIM, NAO;
 }

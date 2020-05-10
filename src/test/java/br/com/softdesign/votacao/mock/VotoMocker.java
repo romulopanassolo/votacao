@@ -1,7 +1,7 @@
 package br.com.softdesign.votacao.mock;
 
 import br.com.softdesign.votacao.dto.VotoTelaDTO;
-import br.com.softdesign.votacao.model.RespostaEnum;
+import br.com.softdesign.votacao.model.Resposta;
 import br.com.softdesign.votacao.model.Voto;
 
 public final class VotoMocker {
@@ -15,20 +15,20 @@ public final class VotoMocker {
 	public static final Voto VOTO = Voto.builder()
 			.associado(AssociadoMocker.ASSOCIADO)
 			.sessao(SessaoMocker.SESSAO_CRIADA)
-			.resposta(RespostaEnum.SIM)
+			.resposta(Resposta.SIM)
 			.build();
 	
 	public static final Voto VOTO_CRIADO = Voto.builder()
 			.id(ID)
 			.associado(AssociadoMocker.ASSOCIADO)
 			.sessao(SessaoMocker.SESSAO_CRIADA)
-			.resposta(RespostaEnum.SIM)
+			.resposta(Resposta.SIM)
 			.build();
 	
 	public static final VotoTelaDTO VOTO_TELA_DTO = VotoTelaDTO.builder()
 			.idAssociado(AssociadoMocker.ID)
 			.idSessao(SessaoMocker.ID)
-			.resposta(RespostaEnum.SIM)
+			.resposta(Resposta.SIM)
 			.build();
 			
 	

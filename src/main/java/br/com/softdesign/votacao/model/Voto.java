@@ -43,6 +43,6 @@ public class Voto implements Serializable {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "resposta")
-	private RespostaEnum resposta;
+	private Resposta resposta;
 	
 }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
 
-import br.com.softdesign.votacao.model.RespostaEnum;
+import br.com.softdesign.votacao.model.Resposta;
 import lombok.Builder;
 import lombok.Data;
 
@@ -21,6 +21,6 @@ public class VotoTelaDTO implements Serializable {
 	private Long idAssociado;
 
 	@NotNull(message = "{validation.voto.requiredValue}")
-	private RespostaEnum resposta;
+	private Resposta resposta;
 
 }
