@@ -8,7 +8,7 @@ public final class AssociadoMocker {
 	public static final Long ID = 1L;
 	public static final Long ID_NOT_FOUND = 0L;
 	public static final String NOME = "Romulo da Silva Panassolo";
-	public static final String CPF = "70175853053";
+	public static final String CPF = "19839091069";
 	public static final String CPF_INVALIDO = "99999999999";
 
 	private AssociadoMocker() {

@@ -14,7 +14,8 @@ public enum MessageKey {
 	VOTO_SESSAO_NAO_CADASTRADA("erro.votoSessaoNaoCadastrada"),
 	VOTO_ASSOCIADO_NAO_CADASTRADO("error.associadoNaoCadastrado"),
 	VOTO_SESSAO_ENCERRADA("error.sessaoEncerrada"), 
-	VOTO_ASSOCIADO_JA_VOTOU("error.associadoJaVotou");
+	VOTO_ASSOCIADO_JA_VOTOU("error.associadoJaVotou"),
+	VOTO_CPF_NAO_APTO_PARA_VOTAR("error.cpfNaoApto");
 	
 	private final String key;
 	
