@@ -19,16 +19,30 @@ Optou-se por versionamento unico para todos as operações da api
 Desenvolvido com:
 
 Springboot 2 - The web framework used
+
 Lombok - The build tools framework usando
+
 Sprint JPA
+
 Spring Security
+
 JUnit
+
 H2Database para tests
+
 SpringBootTest
+
 Maven - Dependency Management
+
 PostgreSQL - PostgreSQL
+
 Swagger - The API design framework
 Autor: Romulo da Silva Panassolo
+
+   Escolha das Tecnologias
+
+Escolha das tecnologias foram baseadas no que seria mais apropriado para a tarefa de expor api como usar rest, java 8 e springboot , aproveitei também para usar demais tecnologias spring como o SpringBootTest, Spring data JPA. O banco postgres e H2Database para testes foram utilizados pois são os mais utilizados para os determinados propósitos.Maven e git também foram utilizados por serem também os mais praticos e eficientes.
+Poderia muito bem utilizar um banco nosql como Mongodb e também poderia ter subistituido o maven por Gadle.Utilizar um container como o docker poderia ter facilitado também no projeto.
 
 Instruções para criar o banco Postgres
 
