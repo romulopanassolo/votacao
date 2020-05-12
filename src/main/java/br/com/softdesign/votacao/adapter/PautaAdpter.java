@@ -1,16 +1,22 @@
 package br.com.softdesign.votacao.adapter;
 
+import java.io.Serializable;
 import java.util.Objects;
+
+import org.springframework.stereotype.Component;
 
 import br.com.softdesign.votacao.dto.PautaDTO;
 import br.com.softdesign.votacao.dto.PautaTelaDTO;
 import br.com.softdesign.votacao.model.Pauta;
 
-public class PautaAdpter {
+@Component
+public class PautaAdpter implements InterfaceAdapter<Pauta, PautaDTO, PautaTelaDTO>,Serializable {
 	
-	
-	
-	public static PautaDTO modelToDTO(Pauta pauta) {
+	private static final long serialVersionUID = -3195921462924155102L;
+
+
+	@Override
+	public PautaDTO modelToDTO(Pauta pauta) {
 		if (Objects.isNull(pauta)) {
 			return null;
 		}
@@ -22,8 +28,8 @@ public class PautaAdpter {
 	}
 	
 	
-	
-	public static Pauta dtoToModel(PautaTelaDTO pautaTelaDTO) {
+	@Override
+	public Pauta dtoToModel(PautaTelaDTO pautaTelaDTO) {
 		if (Objects.isNull(pautaTelaDTO)) {
 			return null;
 		}

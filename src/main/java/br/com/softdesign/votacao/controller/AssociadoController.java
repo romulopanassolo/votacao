@@ -25,23 +25,26 @@ import br.com.softdesign.votacao.service.AssociadoService;
 public class AssociadoController {
 
 	private final AssociadoService associadoService;
+	
+	private final AssociadoAdapter associadoAdapter; 
 
 	@Autowired
-	public AssociadoController(AssociadoService associadoService) {
+	public AssociadoController(AssociadoService associadoService, AssociadoAdapter associadoAdapter) {
 		this.associadoService = associadoService;
+		this.associadoAdapter = associadoAdapter;
 	}
 
 	@PostMapping
 	public ResponseEntity<AssociadoDTO> insert(@Valid @RequestBody AssociadoTelaDTO associadoTelaDTO) {
-		Associado associado = associadoService.save(AssociadoAdapter.dtoToModel(associadoTelaDTO));
-		return ResponseEntity.status(HttpStatus.CREATED).body(AssociadoAdapter.modelToDTO(associado));
+		Associado associado = associadoService.save(associadoAdapter.dtoToModel(associadoTelaDTO));
+		return ResponseEntity.status(HttpStatus.CREATED).body(associadoAdapter.modelToDTO(associado));
 	}
 
 	@GetMapping
 	public ResponseEntity<List<AssociadoDTO>> findAll() {
 		List<Associado> associados = associadoService.findAll();
 		return ResponseEntity.ok(associados.stream()
-				.map(associado -> AssociadoAdapter.modelToDTO(associado))
+				.map(associado -> associadoAdapter.modelToDTO(associado))
 				.collect(Collectors.toList()));
 	}
 

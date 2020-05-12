@@ -1,15 +1,21 @@
 package br.com.softdesign.votacao.adapter;
 
+import java.io.Serializable;
 import java.util.Objects;
+
+import org.springframework.stereotype.Component;
 
 import br.com.softdesign.votacao.dto.AssociadoDTO;
 import br.com.softdesign.votacao.dto.AssociadoTelaDTO;
 import br.com.softdesign.votacao.model.Associado;
 
-public class AssociadoAdapter {
+@Component
+public class AssociadoAdapter implements InterfaceAdapter<Associado, AssociadoDTO, AssociadoTelaDTO>, Serializable {
 
-		
-	public static Associado dtoToModel(AssociadoTelaDTO associadoTelaDTO) {
+	private static final long serialVersionUID = 1256745504998647174L;
+
+
+	public  Associado dtoToModel(AssociadoTelaDTO associadoTelaDTO) {
 		if (Objects.isNull(associadoTelaDTO)) {
 			return null;
 		}
@@ -21,7 +27,7 @@ public class AssociadoAdapter {
 	}
 	
 		
-	public static AssociadoDTO modelToDTO(Associado associado) {
+	public  AssociadoDTO modelToDTO(Associado associado) {
 		if (Objects.isNull(associado)) {
 			return null;
 		}
