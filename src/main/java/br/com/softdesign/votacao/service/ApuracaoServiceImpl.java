@@ -17,12 +17,14 @@ public class ApuracaoServiceImpl implements ApuracaoService{
 
 	private final PautaService pautaService;
 	private final SessaoService sessaoService;
+	private final CalcularPercentualUtil calcularPercentualUtil;
 
 	@Autowired
 	public ApuracaoServiceImpl(PautaService pautaService, 
-			SessaoService sessaoService) {
+			SessaoService sessaoService, CalcularPercentualUtil calcularPercentualUtil) {
 		this.pautaService = pautaService;
 		this.sessaoService = sessaoService;
+		this.calcularPercentualUtil= calcularPercentualUtil;
 	}
 	
 	@Override
@@ -42,8 +44,8 @@ public class ApuracaoServiceImpl implements ApuracaoService{
 				.votosSim(apuracao.getVotosSim())
 				.votosNao(apuracao.getVotosNao())
 				.totalVotos(total)
-				.percentualSim(CalcularPercentualUtil.percentual(apuracao.getVotosSim(), total))
-				.percentualNao(CalcularPercentualUtil.percentual(apuracao.getVotosNao(), total))
+				.percentualSim(calcularPercentualUtil.percentual(apuracao.getVotosSim(), total))
+				.percentualNao(calcularPercentualUtil.percentual(apuracao.getVotosNao(), total))
 				.build();
 	}
 

@@ -1,19 +1,29 @@
 package br.com.softdesign.votacao.adapter;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import br.com.softdesign.votacao.dto.SessaoDTO;
 import br.com.softdesign.votacao.dto.SessaoTelaDTO;
 import br.com.softdesign.votacao.model.Pauta;
 import br.com.softdesign.votacao.model.Sessao;
 
-public class SessaoAdapter {
-	
+@Component
+public class SessaoAdapter implements InterfaceAdapter<Sessao, SessaoDTO, SessaoTelaDTO>, Serializable  {
+		
+	private static final long serialVersionUID = 1811038842529266923L;
+
 	private static final Long TEMPO_DEFAULT = 1L;
+	
+	@Autowired
+	private PautaAdpter pautaAdapter;
 			
-	public static Sessao dtoToModel(SessaoTelaDTO sessaoTelaDTO) {
+	public  Sessao dtoToModel(SessaoTelaDTO sessaoTelaDTO) {
 		if (Objects.isNull(sessaoTelaDTO)) {
 			return null;
 		}
@@ -27,7 +37,7 @@ public class SessaoAdapter {
 	}
 		
 	
-	public static SessaoDTO modelToDTO(Sessao sessao) {
+	public  SessaoDTO modelToDTO(Sessao sessao) {
 		if (Objects.isNull(sessao)) {
 			return null;
 		}
@@ -35,7 +45,7 @@ public class SessaoAdapter {
 				.id(sessao.getId())
 				.inicio(sessao.getInicio())
 				.fim(sessao.getFim())
-				.pautaDTO(Optional.ofNullable(PautaAdpter.modelToDTO(sessao.getPauta())).orElse(null))
+				.pautaDTO(Optional.ofNullable(pautaAdapter.modelToDTO(sessao.getPauta())).orElse(null))
 				.build();
 	}
 	

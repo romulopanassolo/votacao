@@ -1,7 +1,11 @@
 package br.com.softdesign.votacao.adapter;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import br.com.softdesign.votacao.dto.VotoDTO;
 import br.com.softdesign.votacao.dto.VotoTelaDTO;
@@ -9,11 +13,18 @@ import br.com.softdesign.votacao.model.Associado;
 import br.com.softdesign.votacao.model.Sessao;
 import br.com.softdesign.votacao.model.Voto;
 
-public class VotoAdapter {
+@Component
+public class VotoAdapter implements InterfaceAdapter<Voto, VotoDTO, VotoTelaDTO>, Serializable {
 	
+	private static final long serialVersionUID = -3116390686897254124L;
+
+	@Autowired
+	private SessaoAdapter sessaoAdapter;
 	
+	@Autowired
+	private AssociadoAdapter associadoAdapter;
 	
-	public static Voto dtoToModel(VotoTelaDTO votoTelaDTO) {
+	public Voto dtoToModel(VotoTelaDTO votoTelaDTO) {
 		if (Objects.isNull(votoTelaDTO)) {
 			return null;
 		}
@@ -25,15 +36,15 @@ public class VotoAdapter {
 	}
 	
 	
-	public static VotoDTO modelToDTO(Voto voto) {
+	public VotoDTO modelToDTO(Voto voto) {
 		if (Objects.isNull(voto)) {
 			return null;
 		}
 		return VotoDTO.builder()
 				.id(voto.getId())
 				.respostaDTO(voto.getResposta())
-				.sessaoDTO(Optional.ofNullable(SessaoAdapter.modelToDTO(voto.getSessao())).orElse(null))
-				.associadoDTO(Optional.ofNullable(AssociadoAdapter.modelToDTO(voto.getAssociado())).orElse(null))
+				.sessaoDTO(Optional.ofNullable(sessaoAdapter.modelToDTO(voto.getSessao())).orElse(null))
+				.associadoDTO(Optional.ofNullable(associadoAdapter.modelToDTO(voto.getAssociado())).orElse(null))
 				.build();
 	}
 	

@@ -21,18 +21,21 @@ import br.com.softdesign.votacao.service.VotoService;
 public class VotoController {
 	
 	private final VotoService votoService;
+	
+	private final VotoAdapter votoAdapter;
 
 	@Autowired
-	public VotoController(VotoService votoService) {
+	public VotoController(VotoService votoService, VotoAdapter votoAdapter) {
 		this.votoService = votoService;
+		this.votoAdapter = votoAdapter;
 	}
 
 	@PostMapping
 	public ResponseEntity<VotoDTO> insert(@Valid @RequestBody VotoTelaDTO votoTelaDTO) {
-		Voto voto = votoService.save(VotoAdapter.dtoToModel(votoTelaDTO));
+		Voto voto = votoService.save(votoAdapter.dtoToModel(votoTelaDTO));
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
-				.body(VotoAdapter.modelToDTO(voto));
+				.body(votoAdapter.modelToDTO(voto));
 	}
 	
 }

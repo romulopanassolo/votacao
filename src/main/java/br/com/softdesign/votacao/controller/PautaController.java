@@ -24,20 +24,23 @@ import br.com.softdesign.votacao.service.PautaService;
 public class PautaController {
 
 	private final PautaService pautaService;
+	
+	private final PautaAdpter pautaAdapter;
 
 	
 
-	public PautaController(PautaService pautaService) {
+	public PautaController(PautaService pautaService, PautaAdpter pautaAdapter) {
 		this.pautaService = pautaService;
+		this.pautaAdapter = pautaAdapter;
 		
 	}
 
 	@PostMapping
 	public ResponseEntity<PautaDTO> insert(@Valid @RequestBody PautaTelaDTO pautaTelaDTO) {
-		Pauta pauta = pautaService.save(PautaAdpter.dtoToModel(pautaTelaDTO));
+		Pauta pauta = pautaService.save(pautaAdapter.dtoToModel(pautaTelaDTO));
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
-				.body(PautaAdpter.modelToDTO(pauta));
+				.body(pautaAdapter.modelToDTO(pauta));
 	}
 	
 	@GetMapping
@@ -45,7 +48,7 @@ public class PautaController {
 		List<Pauta> pautas = pautaService.findAll();
 		return ResponseEntity
 				.ok(pautas.stream()
-						.map(pauta->PautaAdpter.modelToDTO(pauta))
+						.map(pauta->pautaAdapter.modelToDTO(pauta))
 						.collect(Collectors.toList()));
 	}
 	

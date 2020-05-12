@@ -25,18 +25,21 @@ import br.com.softdesign.votacao.service.SessaoService;
 public class SessaoController {
 	
 	private final SessaoService sessaoService;
+	
+	private final SessaoAdapter sessaoAdapter;
 
 	@Autowired
-	public SessaoController(SessaoService sessaoService) {
+	public SessaoController(SessaoService sessaoService, SessaoAdapter sessaoAdapter) {
 		this.sessaoService = sessaoService;
+		this.sessaoAdapter = sessaoAdapter;
 	}
 	
 	@PostMapping
 	public ResponseEntity<SessaoDTO> insert(@Valid @RequestBody SessaoTelaDTO sessaoTelaDTO) {
-		Sessao sessao = sessaoService.save(SessaoAdapter.dtoToModel(sessaoTelaDTO));
+		Sessao sessao = sessaoService.save(sessaoAdapter.dtoToModel(sessaoTelaDTO));
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
-				.body(SessaoAdapter.modelToDTO(sessao));
+				.body(sessaoAdapter.modelToDTO(sessao));
 	}
 	
 	@GetMapping
@@ -44,7 +47,7 @@ public class SessaoController {
 		List<Sessao> sessoes = sessaoService.findAll();
 		return ResponseEntity
 				.ok(sessoes.stream()
-						.map(sessao -> SessaoAdapter.modelToDTO(sessao))
+						.map(sessao -> sessaoAdapter.modelToDTO(sessao))
 						.collect(Collectors.toList()));
 	}
 	
